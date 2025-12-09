@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTME - Our Company History</title>
+    <style>
+        /* --- General Setup --- 
+        */
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            background-color: #F9FDF5;
+            color: #2F4F4F;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        /* --- Navbar Styles (Matched to projectt.html) --- */
+        .container {
+            max-width: 1280px; /* Matched projectt.html */
+            margin: 0 auto;
+            padding: 0 1rem;
+            width: 100%;
+        }
+        
+        header {
+            background-color: #6AA84F; 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            width: 100%;
+            /* REMOVED: border-bottom: 5px solid #E6FFE6; to match projectt.html */
+        }
+
+        .navbar {
+            position:relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0; /* Adjusted for compactness to match projectt.html */
+        }
+
+        .logo {
+            padding: 10px 20px; 
+        }
+
+        .logo h2 {
+            color: white; 
+            font-size: 1.5rem; 
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            margin: 0;
+            padding: 0;
+            border-bottom: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white; 
+            font-size: 1.15rem;
+            text-decoration: none;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.15s ease-in-out, transform 0.1s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            background-color: #4A7836; 
+            transform: none; 
+        }
+        /* Hamburger Button (Kept Mobile functionality from original hist.html) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+            gap: 4px;
+        }
+        .menu-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: white; 
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile Menu (Kept Mobile functionality from original hist.html) */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%; 
+            left: 0;
+            width: 100%;
+            background-color: #4A7836; /* Dark Sage BG */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            flex-direction: column;
+            padding: 1rem 0;
+        }
+        .mobile-menu a {
+            color: #E6FFE6; /* Tea Green text for contrast on dark mobile menu */
+            font-size: 1.15rem;
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+        
+        /* --- History Page Content Styles --- */
+        .content-wrapper {
+            width: 100%;
+            max-width: 1000px; 
+            padding: 2rem;
+            margin: 3rem 0;
+            box-sizing: border-box;
+        }
+        
+        /* --- Typography and Titles --- */
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #4A7836;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #6AA84F;
+            border-bottom: 3px solid #6AA84F;
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .history-section img{
+            border:#2F4F4F 2px solid;
+            border-radius:14px;
+            height:300px;
+            width:400px;
+        }
+        .history-section img:hover{
+            box-shadow: 0 4px 2px -1px #6a9982;
+        }
+        h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #2F4F4F;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Section Styling --- */
+        .history-section {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .history-section p {
+            margin-bottom: 1.25rem;
+            text-align: justify;
+        }
+
+        /* --- Decorative Element for Timeline --- */
+        .timeline-marker {
+            display: block;
+            width: 100%;
+            height: 5px;
+            background-color: #6AA84F;
+            border-radius: 5px;
+            margin: 3rem 0;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Hide desktop links */
+            }
+            .menu-toggle {
+                display: flex; /* Show hamburger menu */
+            }
+            .navbar {
+                padding: 1rem 0; /* slightly less padding on mobile nav */
+            }
+            .mobile-menu.active {
+                display: flex; /* Show mobile menu when active */
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .content-wrapper {
+                padding: 1rem;
+                margin: 1.5rem 0;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .history-section {
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            .logo h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container navbar">
+                <div class="logo">
+                    <h2>PTME</h2>
+                </div>
+                
+                <!-- Desktop Navigation Links -->
+                <div class="nav-links">
+                    <a href="projectt.html#">Home</a> 
+                    <a href="terms and conditions.html">Profile</a>
+                    <a href="">Contact</a>
+                </div>
+                
+                <!-- Hamburger Menu Toggle (Mobile) -->
+                <div class="menu-toggle" id="menuToggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="content-wrapper">
+        
+        <h1>The PureTea Making Experience (PTME)</h1>
+        
+        <!-- SECTION 1: 1980 to 1990 - From Commodity to Brand -->
+        <div class="history-section" id="ni-refactored">
+            <center><h2>Our Foundational History: The 1980s Transformation</h2></center>
+            <center><h4>1980 to 1990: Shifting from Bulk Commodities to Consumer Focus</h4></center>
+
+            <p>
+                The tea industry in India faced significant challenges in the early 1980s. Rising input and labor costs, compounded by dwindling margins and high taxation, created a difficult operating environment. Furthermore, the global market was intensifying, with increased competition not only from established players like China but also from newly emerging tea-producing nations. This necessitated a strategic rethink for large companies involved in tea production.
+            </p>
+<center><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Tea_Estate_in_Munnar.jpg/250px-Tea_Estate_in_Munnar.jpg"></center>
+            <p>
+                A pivotal moment arrived in 1983 when the company acquired the stake belonging to the UK-based James Finlay group, leading to the formation of the independent entity, PureTea. This event triggered a monumental decision: to decisively pivot away from the volatile commodities business and aggressively move into **consumer branding**. This marked the birth of the first flagship brand, <strong>PureTea</strong> itself, which served as the blueprint for future domestic expansion.
+            </p>
+
+            <p>
+                The success of the initial launch was followed rapidly by the introduction of other key regional brands, including <strong>Kannan Devan, Agni, Gemini, and Chakra Gold</strong>. Despite India being the largest tea market in the world, the concept of branded, packaged tea required extensive marketing and time to gain widespread consumer acceptance, as tradition favored buying bulk. The company invested heavily in building consumer trust and distribution networks, establishing an early lead in this transformative space.
+            </p>
+
+            <p>
+                Solidifying its international ambitions, the company established a fully owned subsidiary, PureTea Inc., in the United States in 1987. This move positioned the organization to begin exploring global growth opportunities and leverage its extensive supply chain capabilities outside of the Indian subcontinent.
+            </p>
+        </div>
+
+        <div class="timeline-marker"></div>
+
+        <!-- SECTION 2: Global Expansion and Modern Operations -->
+        <div class="history-section" id="qw-refactored">
+            <center><h2>Global Scale and Modern Operations </h2></center>
+            <center><h4>The Dawn of PureGlobal Beverages and Consumer Products</h4></center>
+
+            <p>
+                The company was later strategically renamed PureGlobal Beverages (and is now known as PureConsumer Products Limited) to better reflect its expansive vision, which includes diversifying into a wide range of health and nutritional beverages beyond tea. Today, through its network of subsidiary companies, PureConsumer Products Limited is a manufacturing powerhouse, controlling <strong>54 tea estates</strong> and operating <strong>ten sophisticated tea blending and packaging factories</strong>. The organization is a major employer, providing livelihoods to approximately <strong>59,000 people</strong> across its operations.
+            </p>
+            
+            <p>
+                The land under its control is significant, with 51 tea estates located across key regions in India and Sri Lanka, including the prominent tea gardens of Assam and West Bengal in the east, and Kerala in the south. The company holds the distinguished position of being the largest manufacturer of Assam tea and Darjeeling tea, and the second-largest manufacturer of Ceylon tea globally, showcasing its unparalleled vertical integration from cultivation to consumer shelf.
+            </p>
+
+            <p>
+                Founded in 1964 as a pioneering joint venture with James Finlay and Company (initially focused on developing value-added tea), PureConsumer Products Limited has evolved into one of India's first successful multinational companies. Its products and brands now enjoy presence in over <strong>50 countries</strong> worldwide. The core focus remains on branded product offerings, which contribute approximately 86% of its consolidated global turnover, with the remainder generated by bulk tea, coffee sales, and investment income.
+            </p>
+
+            <p>
+                With an area covering approximately 159 square kilometers (61 sq mi) under tea cultivation, the company produces an enormous volume of around <strong>30 million kg of black tea annually</strong>. Its brand portfolio remains robust, encompassing five major domestic names: PureTea, Tetley, Kannan Devan, Chakra Gold, and Gemini. Furthermore, PureConsumer Products Limited operates a 100% export-oriented unit in Munnar, Kerala, which is KOSHER and HACCP certified for safety and quality. This facility, dedicated to manufacturing instant tea, is notable as the largest of its kind operating outside the United States, supporting its vast global distribution network. The company maintains vital subsidiaries across the globe, including in Australia, Great Britain, the United States of America, Czechia, and India.
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.getElementById('menuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            menuToggle.addEventListener('click', function () {
+                mobileMenu.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

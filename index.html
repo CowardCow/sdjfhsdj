@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTME</title>
+    <link rel="icon" type="image" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRkZhdHz60wLw3c4ZtJee9KG4kddHOcNwQ_A&s">
+    <style>
+        /* General Styles - NEW REFINED TEA GREEN PALETTE (Hardcoded Colors) */
+        /* Color Mapping: 
+           Primary: #6AA84F (Tea Green/Sage)
+           Secondary: #4A7836 (Darker Sage)
+           Background: #F9FDF5 (Very Light Mint)
+           Text: #2F4F4F (Dark Slate Gray / Deep Teal)
+           Max Width: 1280px
+        */
+        body {
+            font-family: "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            background-color: #F9FDF5; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #2F4F4F;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Container for Centering */
+        .container {
+            max-width: 1280px; 
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /*  Navigation Bar (Flex Container) */
+        header {
+            background-color: #6AA84F; 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .navbar {
+            position:relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0; 
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            /* Logo padding remains reduced from original version */
+            padding: 10px 20px; 
+        }
+   
+        .nav-links {
+            display: flex;
+            gap: 1.5rem; /* Space between links */
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.15s ease-in-out;
+        }
+
+        .nav-links a:hover {
+            background-color: #4A7836; /* Replaced var(--secondary-color) */
+        }
+
+        /* Hide navigation links on small screens using a media query */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+        
+        /* 2. Main Content Layout (Flexbox) */
+        main {
+            flex-grow: 1;
+            padding: 2.5rem 0;
+        }
+
+        .main-layout {
+            display: flex;
+            flex-direction: column; /* Default to stack (column) on mobile */
+            gap: 2rem;
+        }
+
+        .main-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            flex-grow: 1;
+        }
+        
+        .content-block {
+            padding: 2rem;
+            background-color: #ffffff; 
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+
+        .content-block h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #6AA84F; /* Replaced var(--primary-color) */
+            margin-bottom: 1rem;
+        }
+
+        .content-block p {
+            color: #2F4F4F; /* Replaced var(--text-color) */
+            line-height: 1.6;
+        }
+
+        /* Card Grid (Now fully Flexbox for responsive columns) */
+        .card-grid {
+            display: flex; /* Use Flexbox */
+            flex-wrap: wrap; /* Allows items to wrap onto the next line */
+            gap: 1.5rem;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 1.5rem;
+            background-color: #ffffff; 
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+            border: 1px solid #e5e7eb;
+            border-top: 5px solid #6AA84F; /* Replaced var(--primary-color) */
+            text-align: left; 
+            
+            /* Flex item sizing to achieve the responsive grid effect: */
+            flex: 1 1 300px; 
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #6AA84F; /* Replaced var(--primary-color) */
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: #2F4F4F; /* Replaced var(--text-color) */
+            font-size: 0.875rem;
+            flex-grow: 1; /* Pushes the button to the bottom */
+        }
+
+        .card .button {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #6AA84F; /* Replaced var(--primary-color) */
+            color: white;
+            font-weight: 600;
+            font-size: 0.875rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.15s ease-in-out;
+            outline-offset: 2px;
+            text-decoration: none; 
+            display: inline-block;
+        }
+
+        .card .button:hover {
+            background-color: #4A7836; /* Replaced var(--secondary-color) */
+        }
+        
+        /* 3. Footer */
+        footer {
+            background-color: #385440; 
+            color: white;
+            padding: 1.5rem 0;
+            margin-top: 2.5rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+            gap: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1rem;
+            transition: color 0.15s ease-in-out;
+        }
+
+        .footer-links a:hover {
+            color: #6AA84F; /* Replaced var(--primary-color) */
+        }
+        
+        /* Media Query for Tablet/Desktop Layouts */
+        @media (min-width: 768px) {
+            .main-layout {
+                flex-direction: row; 
+            }
+
+            .main-section {
+                width: 100%; 
+                flex-grow: 1;
+            }
+            
+            .footer-content {
+                flex-direction: row;
+            }
+            
+            .footer-links a {
+                margin-left: 1.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- 1. Navigation Bar -->
+    <header>
+        <nav>
+            <div class="container navbar">
+                <div class="logo">
+                   
+                    <h2>PTME</h2>
+                </div>
+                <div class="nav-links">
+                    <a href="#">Home</a>
+                    <a href="terms and conditions.html">Profile</a>
+                    <a href="">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 2. Main Content Layout -->
+    <main>
+        <div class="container main-layout">
+
+            <section class="main-section">
+
+                <div class="content-block">
+                    <h1>Welcome to the PTME</h1>
+                    <p>
+                        Pure Tea Making Experience (PTME) is a local organization dedicated to helping you understand the processes your tea leaves undergo before reaching your doorsteps.
+                    </p>
+                </div>
+
+                <!-- FLEXBOX CARD GRID 1 -->
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>The Harvesting Project</h3>
+                        <p>This section uses a responsive Flexbox layout. Items will automatically stack on smaller screens and fill the space on larger ones, maintaining the fluid design.</p>
+                        <a href="" class="button">Details</a> 
+                    </div>
+
+                    <div class="card">
+                        <h3>Our Blending Process</h3>
+                        <p>The layout uses `flex-wrap: wrap` on the container and a defined `flex-basis` on the cards to control when items drop to the next row, achieving a grid-like appearance with pure Flexbox.</p>
+                        <a href="" class="button">View</a>
+                    </div>
+
+                    <div class="card">
+                        <h3>Sustainability Goals</h3>
+                        <p>All styling and layout definitions are self-contained within the head's style tag, relying on Flexbox for all primary layout needs, including the navigation and the main content section.</p>
+                        <a href="" class="button">Explore</a>
+                    </div>
+                </div>
+                
+                <div class="content-block">
+                    <h1>Company Background</h1>
+                    <p>Learn more about the origin and global presence of Pure Tea Consumer Products by clicking the links below.</p>
+                </div>
+
+                <!-- FLEXBOX CARD GRID 2 (Historical Content) -->
+                <div class="card-grid">
+                    <!-- History Card -->
+                    <div class="card">
+                        <h3>The 1980s Transformation</h3>
+                        <p>Explore the pivotal 1980s when the company shifted from the commodities business to consumer branding, introducing brands like Pure Tea, Kannan Devan, and Agni.</p>
+                        <a href="hist.html#ni" class="button">Read Full Story</a>
+                    </div>
+                    <!-- Global Brands Card -->
+                    <div class="card">
+                        <h3>Global Brands & Reach</h3>
+                        <p>Discover the vast portfolio, including Tetley and Eight O'Clock Coffee. Tetley is the biggest-selling tea brand in Canada and the second-biggest-selling in the UK and US.</p>
+                        <a href="hist.html#qw-refactored" class="button">View More</a>
+                    </div>
+                    <!-- Market Context Card -->
+                    <div class="card">
+                        <h3>Our Other Companies</h3>
+                        <p>Explore the pivotal 1980s when the company shifted from the commodities business to consumer branding, introducing brands like Pure Tea, Kannan Devan, and Agni.</p>
+                        <a href="" class="button">View Timeline</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <!-- 3. Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2024 PTMEProject. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
