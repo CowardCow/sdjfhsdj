@@ -3,65 +3,53 @@
 <head>
     <title>2510990093_G1</title>
     <style>
-        /* 1. Background Color for Margins/Page */
         body {
-            /* Lighter green background for the page margins */
             background-color: #6aa84f; 
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            
-            /* 2. Centering the Form (Horizontal Only) */
             display: flex;
-            justify-content: center; /* Horizontally centers the form */
-            /* Removed align-items: center; to keep the form near the top */
+            justify-content: center;
         }
         
         form {
-            /* Narrower max-width for a more elegant, contained look */
             width: 90%;
             max-width: 400px; 
-            margin-top: 40px; /* Add space from the top of the browser */
-            margin-bottom: 40px; /* Add space at the bottom */
-            
-            /* 3. Adjusting Font Size and Adding Padding/Background */
+            margin-top: 40px;
+            margin-bottom: 40px;
             background-color: #ffffff; 
-            padding: 25px; /* Slightly increased padding inside the form */
-            border-radius: 12px; /* Slightly more rounded corners */
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Stronger shadow */
-            
-            /* Base font size adjustment */
-            font-size: 1em; /* Reduced base font size slightly for balance */
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            font-size: 1em;
         }
 
         fieldset {
-            border: 1px solid #e0e0e0; /* Lighter border color */
-            padding: 15px; /* Reduced internal padding */
+            border: 1px solid #e0e0e0;
+            padding: 15px;
             border-radius: 8px;
         }
 
         legend {
-            /* Making the legend text size a bit larger and clearer */
-            font-size: 1.5em; /* Slightly larger legend */
+            font-size: 1.5em;
             font-weight: bold;
             padding: 0 10px;
             text-align: center;
-            color: #4CAF50; /* Match text color to the submit button */
+            color: #4CAF50;
         }
         
-        /* Styling inputs and textarea for better appearance */
         input[type="text"],
         input[type="number"],
         input[type="email"],
         input[type="password"],
         select,
         textarea {
-            width: 100%; /* Use 100% width, let box-sizing handle padding */
-            height: 38px; /* Standardized height for inputs */
+            width: 100%;
+            height: 38px;
             padding: 0 10px; 
-            margin-top: 3px; /* Reduced margin */
-            margin-bottom: 8px; /* Reduced margin */
+            margin-top: 3px;
+            margin-bottom: 4px;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box; 
@@ -69,12 +57,11 @@
         }
 
         textarea {
-            height: auto; /* Override fixed height for textarea */
-            min-height: 80px; /* Ensure a minimum height for the address field */
+            height: auto;
+            min-height: 80px;
             padding: 10px;
         }
 
-        /* Remove the excessive vertical space from <br> tags */
         br {
             content: "";
             display: block;
@@ -85,7 +72,7 @@
         button {
             padding: 10px 15px;
             margin-right: 10px;
-            margin-top: 15px; /* Add some space above the buttons */
+            margin-top: 15px;
             border: none;
             border-radius: 6px;
             cursor: pointer;
@@ -111,33 +98,63 @@
         button[type="reset"]:hover {
             background-color: #da190b;
         }
+
+        /* Error message styling */
+        .error-msg {
+            color: red;
+            font-size: 0.82em;
+            display: none;
+            margin-bottom: 6px;
+        }
     </style>
 </head>
 <body>
-<form autocomplete="on" action="thank.html" target="_blank">
+<form autocomplete="on">
 <fieldset>
 <legend>LOGIN FORM</legend>
-<label><b>Name:</b></label><input type="text" placeholder="Enter your name here" required>
+
+<label><b>Name:</b></label>
+<input type="text" id="name" placeholder="Enter your name here">
+<p class="error-msg" id="nameError">Name is required!</p>
+
 <br>
-<label>Phone:</label><input type="number" minlength="10" maxlength="10" placeholder="Enter your phone no. here">
+<label>Phone:</label>
+<input type="number" id="phone" placeholder="Enter your phone no. here">
+<p class="error-msg" id="phoneError">Phone number must be exactly 10 digits!</p>
+
 <br>
-<label>Email:</label> <input type="email" placeholder="Enter your email here" required>
+<label>Email:</label>
+<input type="email" id="email" placeholder="Enter your email here">
+<p class="error-msg" id="emailError">Please enter a valid email (must contain @)!</p>
+
 <br>
-Address(required for deliveries):<textarea rows="5"></textarea>
+Address(required for deliveries):
+<textarea id="address" rows="5"></textarea>
+<p class="error-msg" id="addressError">Address is required for deliveries!</p>
+
 <br>
-<label>Password:</label><input type="password" minlength="10" maxlength="10" placeholder="Enter your password" required>
+<label>Password:</label>
+<input type="password" id="password" placeholder="Enter your password">
+<p class="error-msg" id="passwordError">Password must be exactly 10 characters!</p>
+
 <br>
-<label>Citizen of</label><select><option>India</option>
-<option>Others</option></select>
+<label>Citizen of</label>
+<select id="country">
+    <option>India</option>
+    <option>Others</option>
+</select>
 <br>
+
 <label>Prefferable Beverage</label>
 <br>
-<input type="radio" id="tea" name="beverage"><label for="tea">Tea</label>
+<input type="radio" id="tea" name="beverage" value="tea"><label for="tea">Tea</label>
 <br>   
-<input type="radio" id="black_tea" name="beverage"><label for="black_tea">Black tea</label>
+<input type="radio" id="black_tea" name="beverage" value="black_tea"><label for="black_tea">Black tea</label>
 <br>
-<input type="radio" id="oolong_tea" name="beverage"><label for="oolong_tea">Oolong Tea</label>
+<input type="radio" id="oolong_tea" name="beverage" value="oolong_tea"><label for="oolong_tea">Oolong Tea</label>
 <br>
+<p class="error-msg" id="beverageError">Please select a beverage!</p>
+
 <label>Products</label>
 <br>
 <input type="checkbox" id="pure_premium"><label for="pure_premium">Pure tea Premimium</label>
@@ -146,9 +163,95 @@ Address(required for deliveries):<textarea rows="5"></textarea>
 <br>
 <input type="checkbox" id="pure_label"><label for="pure_label">Pure Label Tea</label>
 <br>
-<button type="submit" class="button-danger">Log In</button>
-<button type="reset">Reset</button>
+<p class="error-msg" id="productError">Please select at least one product!</p>
+
+<button type="button" onclick="validateForm()">Log In</button>
+<button type="reset" onclick="clearErrors()">Reset</button>
 </fieldset>
 </form>
+
+<script>
+    function validateForm() {
+        let valid = true;
+
+        // Name validation
+        const name = document.getElementById("name").value.trim();
+        if (name === "") {
+            document.getElementById("nameError").style.display = "block";
+            valid = false;
+        } else {
+            document.getElementById("nameError").style.display = "none";
+        }
+
+        // Phone validation — must be exactly 10 digits
+        const phone = document.getElementById("phone").value.trim();
+        if (phone !== "" && phone.length !== 10) {
+            document.getElementById("phoneError").style.display = "block";
+            valid = false;
+        } else {
+            document.getElementById("phoneError").style.display = "none";
+        }
+
+        // Email validation
+        const email = document.getElementById("email").value.trim();
+        if (email === "" || !email.includes("@")) {
+            document.getElementById("emailError").style.display = "block";
+            valid = false;
+        } else {
+            document.getElementById("emailError").style.display = "none";
+        }
+
+        // Address validation
+        const address = document.getElementById("address").value.trim();
+        if (address === "") {
+            document.getElementById("addressError").style.display = "block";
+            valid = false;
+        } else {
+            document.getElementById("addressError").style.display = "none";
+        }
+
+        // Password validation — must be exactly 10 characters
+        const password = document.getElementById("password").value;
+        if (password.length !== 10) {
+            document.getElementById("passwordError").style.display = "block";
+            valid = false;
+        } else {
+            document.getElementById("passwordError").style.display = "none";
+        }
+
+        // Beverage validation — at least one radio must be selected
+        const beverageSelected = document.querySelector('input[name="beverage"]:checked');
+        if (!beverageSelected) {
+            document.getElementById("beverageError").style.display = "block";
+            valid = false;
+        } else {
+            document.getElementById("beverageError").style.display = "none";
+        }
+
+        // Product validation — at least one checkbox must be checked
+        const productChecked = document.getElementById("pure_premium").checked ||
+                               document.getElementById("pure_herbal").checked ||
+                               document.getElementById("pure_label").checked;
+        if (!productChecked) {
+            document.getElementById("productError").style.display = "block";
+            valid = false;
+        } else {
+            document.getElementById("productError").style.display = "none";
+        }
+
+        // If everything is valid, go to thank.html
+        if (valid) {
+            window.open("thank.html", "_blank");
+        }
+    }
+
+    // Clear all error messages when Reset is clicked
+    function clearErrors() {
+        const errors = document.querySelectorAll(".error-msg");
+        errors.forEach(function(e) {
+            e.style.display = "none";
+        });
+    }
+</script>
 </body>
-</html
+</html>
