@@ -111,7 +111,7 @@
 <body>
 <form autocomplete="on">
 <fieldset>
-<legend>LOGIN FORM</legend>
+<legend>REGISTER FORM</legend>
 
 <label><b>Name:</b></label>
 <input type="text" id="name" placeholder="Enter your name here">
@@ -165,7 +165,7 @@ Address(required for deliveries):
 <br>
 <p class="error-msg" id="productError">Please select at least one product!</p>
 
-<button type="button" onclick="validateForm()">Log In</button>
+<button type="button" onclick="validateForm()">REGISTER</button>
 <button type="reset" onclick="clearErrors()">Reset</button>
 </fieldset>
 </form>
@@ -212,7 +212,7 @@ Address(required for deliveries):
 
         // Password validation — must be exactly 10 characters
         const password = document.getElementById("password").value;
-        if (password.length !== 10) {
+        if (password.length < 8) {
             document.getElementById("passwordError").style.display = "block";
             valid = false;
         } else {
@@ -241,7 +241,8 @@ Address(required for deliveries):
 
         // If everything is valid, go to thank.html
         if (valid) {
-            window.open("index.html");
+            window.location.href = "index.html";
+
         }
     }
 
