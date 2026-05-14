@@ -6,14 +6,6 @@
     <title>PTME</title>
     <link rel="icon" type="image" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRkZhdHz60wLw3c4ZtJee9KG4kddHOcNwQ_A&s">
     <style>
-        /* General Styles - NEW REFINED TEA GREEN PALETTE (Hardcoded Colors) */
-        /* Color Mapping: 
-           Primary: #6AA84F (Tea Green/Sage)
-           Secondary: #4A7836 (Darker Sage)
-           Background: #F9FDF5 (Very Light Mint)
-           Text: #2F4F4F (Dark Slate Gray / Deep Teal)
-           Max Width: 1280px
-        */
         body {
             font-family: "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             background-color: #F9FDF5; 
@@ -25,14 +17,12 @@
             line-height: 1.5;
         }
 
-        /* Container for Centering */
         .container {
             max-width: 1280px; 
             margin: 0 auto;
             padding: 0 1rem;
         }
 
-        /*  Navigation Bar (Flex Container) */
         header {
             background-color: #6AA84F; 
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
@@ -54,13 +44,12 @@
             font-size: 1.5rem;
             font-weight: bold;
             letter-spacing: 0.05em;
-            /* Logo padding remains reduced from original version */
             padding: 10px 20px; 
         }
    
         .nav-links {
             display: flex;
-            gap: 1.5rem; /* Space between links */
+            gap: 1.5rem;
         }
 
         .nav-links a {
@@ -72,17 +61,25 @@
         }
 
         .nav-links a:hover {
-            background-color: #4A7836; /* Replaced var(--secondary-color) */
+            background-color: #4A7836;
         }
 
-        /* Hide navigation links on small screens using a media query */
+        /* Favourites nav link stands out slightly */
+        #fav-nav-link {
+            background-color: rgba(255, 255, 255, 0.15);
+            font-weight: 700;
+        }
+
+        #fav-nav-link:hover {
+            background-color: #4A7836;
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
         }
         
-        /* 2. Main Content Layout (Flexbox) */
         main {
             flex-grow: 1;
             padding: 2.5rem 0;
@@ -90,7 +87,7 @@
 
         .main-layout {
             display: flex;
-            flex-direction: column; /* Default to stack (column) on mobile */
+            flex-direction: column;
             gap: 2rem;
         }
 
@@ -112,19 +109,18 @@
         .content-block h1 {
             font-size: 2rem;
             font-weight: 800;
-            color: #6AA84F; /* Replaced var(--primary-color) */
+            color: #6AA84F;
             margin-bottom: 1rem;
         }
 
         .content-block p {
-            color: #2F4F4F; /* Replaced var(--text-color) */
+            color: #2F4F4F;
             line-height: 1.6;
         }
 
-        /* Card Grid (Now fully Flexbox for responsive columns) */
         .card-grid {
-            display: flex; /* Use Flexbox */
-            flex-wrap: wrap; /* Allows items to wrap onto the next line */
+            display: flex;
+            flex-wrap: wrap;
             gap: 1.5rem;
         }
 
@@ -138,10 +134,8 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             transition: box-shadow 0.3s ease-in-out;
             border: 1px solid #e5e7eb;
-            border-top: 5px solid #6AA84F; /* Replaced var(--primary-color) */
+            border-top: 5px solid #6AA84F;
             text-align: left; 
-            
-            /* Flex item sizing to achieve the responsive grid effect: */
             flex: 1 1 300px; 
         }
 
@@ -152,20 +146,20 @@
         .card h3 {
             font-size: 1.25rem;
             font-weight: bold;
-            color: #6AA84F; /* Replaced var(--primary-color) */
+            color: #6AA84F;
             margin-bottom: 0.5rem;
         }
 
         .card p {
-            color: #2F4F4F; /* Replaced var(--text-color) */
+            color: #2F4F4F;
             font-size: 0.875rem;
-            flex-grow: 1; /* Pushes the button to the bottom */
+            flex-grow: 1;
         }
 
         .card .button {
             margin-top: 1rem;
             padding: 0.5rem 1rem;
-            background-color: #6AA84F; /* Replaced var(--primary-color) */
+            background-color: #6AA84F;
             color: white;
             font-weight: 600;
             font-size: 0.875rem;
@@ -179,10 +173,9 @@
         }
 
         .card .button:hover {
-            background-color: #4A7836; /* Replaced var(--secondary-color) */
+            background-color: #4A7836;
         }
         
-        /* 3. Footer */
         footer {
             background-color: #385440; 
             color: white;
@@ -207,10 +200,9 @@
         }
 
         .footer-links a:hover {
-            color: #6AA84F; /* Replaced var(--primary-color) */
+            color: #6AA84F;
         }
         
-        /* Media Query for Tablet/Desktop Layouts */
         @media (min-width: 768px) {
             .main-layout {
                 flex-direction: row; 
@@ -230,28 +222,227 @@
             }
         }
 
+        /* ---- Tea Menu Section Styles ---- */
+        .tea-menu-block {
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+
+        .tea-menu-block h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #6AA84F;
+            margin-bottom: 0.5rem;
+        }
+
+        .tea-menu-block p.subtitle {
+            color: #2F4F4F;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Filter buttons */
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-btn {
+            padding: 0.4rem 1rem;
+            border: 2px solid #6AA84F;
+            border-radius: 999px;
+            background-color: white;
+            color: #6AA84F;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background-color 0.15s ease, color 0.15s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: #6AA84F;
+            color: white;
+        }
+
+        /* Tea cards inside the menu */
+        #tea-menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .tea-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 1.5rem;
+            background-color: #F9FDF5;
+            border-radius: 0.75rem;
+            border: 1px solid #e5e7eb;
+            border-top: 5px solid #6AA84F;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+            flex: 1 1 250px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .tea-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+        }
+
+        .tea-card h3 {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #6AA84F;
+            margin: 0 0 0.4rem 0;
+        }
+
+        .tea-card p {
+            font-size: 0.875rem;
+            color: #2F4F4F;
+            flex-grow: 1;
+            margin: 0 0 0.75rem 0;
+        }
+
+        .tea-tag {
+            display: inline-block;
+            background-color: #6AA84F;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 2px 10px;
+            border-radius: 999px;
+        }
+
+        #no-results {
+            color: #888;
+            font-style: italic;
+            display: none;
+        }
+
+        /* Favourite button */
+        .fav-btn {
+            margin-top: 0.6rem;
+            padding: 0.4rem 1rem;
+            background-color: white;
+            color: #6AA84F;
+            border: 2px solid #6AA84F;
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.15s ease, color 0.15s ease;
+        }
+
+        .fav-btn:hover {
+            background-color: #6AA84F;
+            color: white;
+        }
+
+        .fav-btn.saved {
+            background-color: #4A7836;
+            color: white;
+            border-color: #4A7836;
+            cursor: default;
+        }
+
+        /* Favourites display block */
+        .favourites-block {
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+
+        .favourites-block h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #6AA84F;
+            margin-bottom: 0.5rem;
+        }
+
+        .favourites-block p.subtitle {
+            color: #2F4F4F;
+            margin-bottom: 1rem;
+        }
+
+        #fav-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .fav-pill {
+            background-color: #6AA84F;
+            color: white;
+            padding: 0.3rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .fav-pill button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 0.9rem;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+
+        #fav-empty {
+            color: #888;
+            font-style: italic;
+        }
+
+        #clear-favs-btn {
+            margin-top: 1rem;
+            padding: 0.4rem 1rem;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: none;
+        }
+
+        #clear-favs-btn:hover {
+            background-color: #da190b;
+        }
+
     </style>
 </head>
 <body>
 
-    <!-- 1. Navigation Bar -->
+    <!-- Navigation Bar -->
     <header>
         <nav>
             <div class="container navbar">
                 <div class="logo">
-                   
                     <h2>PTME</h2>
                 </div>
                 <div class="nav-links">
                     <a href="#">Home</a>
                     <a href="terms and conditions.html">Profile</a>
                     <a href="">Contact</a>
+                    <a href="favourites.html" id="fav-nav-link">Favourites</a>
                 </div>
             </div>
         </nav>
     </header>
 
-    <!-- 2. Main Content Layout -->
+    <!-- Main Content -->
     <main>
         <div class="container main-layout">
 
@@ -271,51 +462,67 @@
                         <p>This section uses a responsive Flexbox layout. Items will automatically stack on smaller screens and fill the space on larger ones, maintaining the fluid design.</p>
                         <a href="" class="button">Details</a> 
                     </div>
-
                     <div class="card">
                         <h3>Our Blending Process</h3>
                         <p>The layout uses `flex-wrap: wrap` on the container and a defined `flex-basis` on the cards to control when items drop to the next row, achieving a grid-like appearance with pure Flexbox.</p>
                         <a href="" class="button">View</a>
                     </div>
-
                     <div class="card">
                         <h3>Sustainability Goals</h3>
                         <p>All styling and layout definitions are self-contained within the head's style tag, relying on Flexbox for all primary layout needs, including the navigation and the main content section.</p>
                         <a href="" class="button">Explore</a>
                     </div>
                 </div>
-                
+
+                <!-- ===== DYNAMIC TEA MENU (DOM Manipulation) ===== -->
+                <div class="tea-menu-block">
+                    <h1> Our Tea Menu</h1>
+                    <p class="subtitle">Browse our full range of teas. Use the filters to find your perfect blend.</p>
+
+                    <!-- Filter buttons — clicking these triggers an event -->
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" onclick="filterTeas('All')">All</button>
+                        <button class="filter-btn" onclick="filterTeas('Black Tea')">Black Tea</button>
+                        <button class="filter-btn" onclick="filterTeas('Green Tea')">Green Tea</button>
+                        <button class="filter-btn" onclick="filterTeas('Herbal')">Herbal</button>
+                        <button class="filter-btn" onclick="filterTeas('Oolong Tea')">Oolong Tea</button>
+                    </div>
+
+                    <!-- JS will build cards here -->
+                    <div id="tea-menu-container"></div>
+                    <p id="no-results">No teas found for this filter.</p>
+                </div>
+                <!-- ===== END TEA MENU ===== -->
+
                 <div class="content-block">
                     <h1>Company Background</h1>
                     <p>Learn more about the origin and global presence of Pure Tea Consumer Products by clicking the links below.</p>
                 </div>
 
-                <!-- FLEXBOX CARD GRID 2 (Historical Content) -->
+                <!-- FLEXBOX CARD GRID 2 -->
                 <div class="card-grid">
-                    <!-- History Card -->
                     <div class="card">
                         <h3>The 1980s Transformation</h3>
                         <p>Explore the pivotal 1980s when the company shifted from the commodities business to consumer branding, introducing brands like Pure Tea, Kannan Devan, and Agni.</p>
                         <a href="hist.html#ni" class="button">Read Full Story</a>
                     </div>
-                    <!-- Global Brands Card -->
                     <div class="card">
                         <h3>Global Brands & Reach</h3>
                         <p>Discover the vast portfolio, including Tetley and Eight O'Clock Coffee. Tetley is the biggest-selling tea brand in Canada and the second-biggest-selling in the UK and US.</p>
                         <a href="hist.html#qw-refactored" class="button">View More</a>
                     </div>
-                    <!-- Market Context Card -->
                     <div class="card">
                         <h3>Our Other Companies</h3>
                         <p>Explore the pivotal 1980s when the company shifted from the commodities business to consumer branding, introducing brands like Pure Tea, Kannan Devan, and Agni.</p>
                         <a href="" class="button">View Timeline</a>
                     </div>
                 </div>
+
             </section>
         </div>
     </main>
     
-    <!-- 3. Footer -->
+    <!-- Footer -->
     <footer>
         <div class="container footer-content">
             <p>&copy; 2024 PTMEProject. All rights reserved.</p>
@@ -325,6 +532,190 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // ---- Tea data array ----
+        const teas = [
+            { name: "Pure Tea Premium", type: "Black Tea", description: "A bold and rich blend perfect for a strong morning brew." },
+            { name: "Pure Herbal Tea", type: "Herbal", description: "A soothing caffeine-free blend of natural herbs and botanicals." },
+            { name: "Pure Label Tea", type: "Green Tea", description: "Light and refreshing with a delicate grassy flavour." },
+            { name: "Kannan Devan", type: "Black Tea", description: "Classic highland tea with a smooth, earthy taste from the hills." },
+            { name: "Oolong Select", type: "Oolong Tea", description: "A semi-oxidised tea with a floral, fruity aroma." },
+            { name: "Chakra Gold", type: "Black Tea", description: "A strong, full-bodied tea with a deep amber colour." },
+            { name: "Mint Refresh", type: "Herbal", description: "Cool and invigorating peppermint herbal blend, great after meals." },
+            { name: "Jade Mist", type: "Green Tea", description: "A premium green tea with a mild, sweet finish." }
+        ];
+
+        // ---- localStorage helpers ----
+
+        // Get the favourites array from localStorage (returns [] if nothing saved yet)
+        function getFavourites() {
+            const saved = localStorage.getItem("ptmeFavourites");
+            return saved ? JSON.parse(saved) : [];
+        }
+
+        // Save the favourites array back into localStorage
+        function saveFavourites(favs) {
+            localStorage.setItem("ptmeFavourites", JSON.stringify(favs));
+        }
+
+        // ---- Add to Favourites ----
+        function addToFavourites(teaName, btn) {
+            const favs = getFavourites();
+
+            // Don't add duplicates
+            if (favs.includes(teaName)) return;
+
+            // Add the tea name and save
+            favs.push(teaName);
+            saveFavourites(favs);
+
+            // Update the button to show it's been saved
+            btn.textContent = "Saved!";
+            btn.classList.add("saved");
+            btn.disabled = true;
+
+            // Refresh the favourites display
+            displayFavourites();
+        }
+
+        // ---- Remove a single favourite ----
+        function removeFavourite(teaName) {
+            let favs = getFavourites();
+            favs = favs.filter(function(f) { return f !== teaName; });
+            saveFavourites(favs);
+            displayFavourites();
+            // Rebuild cards so the button resets back to "♡ Add to Favourites"
+            const activeBtn = document.querySelector(".filter-btn.active");
+            buildTeaMenu(activeBtn ? activeBtn.textContent : "All");
+        }
+
+        // ---- Clear all favourites ----
+        function clearAllFavourites() {
+            localStorage.removeItem("ptmeFavourites");
+            displayFavourites();
+            const activeBtn = document.querySelector(".filter-btn.active");
+            buildTeaMenu(activeBtn ? activeBtn.textContent : "All");
+        }
+
+        // ---- Display the favourites section ----
+        function displayFavourites() {
+            const favs = getFavourites();
+            const favList = document.getElementById("fav-list");
+            const favEmpty = document.getElementById("fav-empty");
+            const clearBtn = document.getElementById("clear-favs-btn");
+
+            // Clear and rebuild the list
+            favList.innerHTML = "";
+
+            if (favs.length === 0) {
+                // Show the empty message
+                const emptyMsg = document.createElement("p");
+                emptyMsg.id = "fav-empty";
+                emptyMsg.textContent = "You haven't saved any favourites yet.";
+                favList.appendChild(emptyMsg);
+                clearBtn.style.display = "none";
+            } else {
+                clearBtn.style.display = "inline-block";
+                // Create a pill for each favourite
+                favs.forEach(function(teaName) {
+                    const pill = document.createElement("div");
+                    pill.className = "fav-pill";
+
+                    const label = document.createElement("span");
+                    label.textContent = teaName;
+
+                    // Small × button to remove this one favourite
+                    const removeBtn = document.createElement("button");
+                    removeBtn.textContent = "×";
+                    removeBtn.title = "Remove";
+                    removeBtn.onclick = function() { removeFavourite(teaName); };
+
+                    pill.appendChild(label);
+                    pill.appendChild(removeBtn);
+                    favList.appendChild(pill);
+                });
+            }
+        }
+
+        // ---- Build tea cards using DOM manipulation ----
+        function buildTeaMenu(filter) {
+            const container = document.getElementById("tea-menu-container");
+            const noResults = document.getElementById("no-results");
+            const favs = getFavourites();
+
+            // Clear whatever cards are already showing
+            container.innerHTML = "";
+
+            // Decide which teas to show based on the filter
+            const filtered = filter === "All" ? teas : teas.filter(function(tea) {
+                return tea.type === filter;
+            });
+
+            // Show "no results" message if nothing matches
+            if (filtered.length === 0) {
+                noResults.style.display = "block";
+                return;
+            } else {
+                noResults.style.display = "none";
+            }
+
+            // Loop through and create a card for each tea
+            filtered.forEach(function(tea) {
+                const card = document.createElement("div");
+                card.className = "tea-card";
+
+                const heading = document.createElement("h3");
+                heading.textContent = tea.name;
+
+                const desc = document.createElement("p");
+                desc.textContent = tea.description;
+
+                const tag = document.createElement("span");
+                tag.className = "tea-tag";
+                tag.textContent = tea.type;
+
+                // Favourite button
+                const favBtn = document.createElement("button");
+                favBtn.className = "fav-btn";
+                const alreadySaved = favs.includes(tea.name);
+                if (alreadySaved) {
+                    favBtn.textContent = "Saved!";
+                    favBtn.classList.add("saved");
+                    favBtn.disabled = true;
+                } else {
+                    favBtn.textContent = "♡ Add to Favourites";
+                    favBtn.onclick = function() { addToFavourites(tea.name, favBtn); };
+                }
+
+                // Attach all elements to the card
+                card.appendChild(heading);
+                card.appendChild(desc);
+                card.appendChild(tag);
+                card.appendChild(favBtn);
+
+                // Attach the card to the page
+                container.appendChild(card);
+            });
+        }
+
+        // ---- Filter button click handler ----
+        function filterTeas(type) {
+            const buttons = document.querySelectorAll(".filter-btn");
+            buttons.forEach(function(btn) {
+                if (btn.textContent === type) {
+                    btn.classList.add("active");
+                } else {
+                    btn.classList.remove("active");
+                }
+            });
+            buildTeaMenu(type);
+        }
+
+        // On page load: build the menu and show any saved favourites
+        buildTeaMenu("All");
+        displayFavourites();
+    </script>
 
 </body>
 </html>
